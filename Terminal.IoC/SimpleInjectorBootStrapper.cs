@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using SimpleInjector;
 using SimpleInjector.Lifestyles;
 using Terminal.Data;

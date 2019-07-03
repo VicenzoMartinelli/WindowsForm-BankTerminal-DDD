@@ -14,7 +14,7 @@ namespace Terminal.Domain.Models
     {
       this.Contas = new HashSet<Conta>();
     }
-    [Required(ErrorMessage = "O C.P.F é obrigatório!")]
+    [Required(ErrorMessage = "O CPF é obrigatório!")]
     [StringLength(11, MinimumLength = 11, ErrorMessage = "Informe um cpf válido, o mesmo deve possuir 11 dígitos!")]
     public string CPF { get; set; }
     [Required(ErrorMessage = "Insira o nome do correntista!")]

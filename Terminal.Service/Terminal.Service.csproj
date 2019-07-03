@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\NumContaJaExistenteException.cs" />
     <Compile Include="Exceptions\SaldoInsufficienteException.cs" />
     <Compile Include="Interfaces\IServiceAdmin.cs" />
     <Compile Include="Interfaces\IServiceOperacoes.cs" />
@@ -48,7 +50,6 @@
     <Compile Include="Services\ServiceAdmin.cs" />
     <Compile Include="Services\ServiceOperacoes.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Terminal.Domain\Terminal.Domain.csproj">
       <Project>{9D67F14E-19EC-4DB2-A059-49629A936A7B}</Project>

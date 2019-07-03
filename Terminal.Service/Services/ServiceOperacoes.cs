@@ -31,11 +31,24 @@ namespace Terminal.Service.Services
       _unitOfWork            = unitOfWork;
     }
 
+    public Conta GetContaByCpfAndNumConta(string cpf, string numConta)
+    {
+      return _repositoryConta.GetByCpfAndNumConta(cpf, numConta);
+    }
+
+    public Task<Conta> GetContaByCpfAndNumContaAsync(string cpf, string numConta)
+    {
+      return Task.FromResult(_repositoryConta.GetByCpfAndNumConta(cpf, numConta));
+    }
+
     public IEnumerable<Lancamento> GetExtrato(Conta conta, int margemDias = 30)
     {
+      var d1 = DateTime.Now.AddDays(-margemDias).Date;
+      var d2 = (DateTime.Now.AddDays(1)).Date;
+
       return _repositoryLancamento.GetAll()
-        .Where(x => x.Data.Date > DateTime.Now.AddDays(-margemDias).Date && x.Data.Date <= DateTime.Now.Date)
-        .OrderByDescending(x => x.Data);
+        .Where(x => x.Conta.Id == conta.Id)
+        .Where(x => x.Data >= d1 && x.Data <= d2);
     }
 
     public Task<IEnumerable<Lancamento>> GetExtratoAsync(Conta conta, int margemDias = 30)
@@ -58,7 +71,7 @@ namespace Terminal.Service.Services
         Data     = DateTime.Now,
         Operacao = ETipoOperacao.Debito,
         Valor    = valor,
-        Descricao= $"Saque de R$ ${valor.ToString("0.00")}"
+        Descricao= $"Saque de R$ {valor.ToString("0.00")}"
       });
 
       _unitOfWork.Commit();

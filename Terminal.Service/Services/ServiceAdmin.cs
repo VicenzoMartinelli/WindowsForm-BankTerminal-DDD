@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terminal.Domain.Interfaces;
 using Terminal.Domain.Models;
+using Terminal.Service.Exceptions;
 using Terminal.Service.Interfaces;
 
 namespace Terminal.Service.Services
@@ -33,13 +34,16 @@ namespace Terminal.Service.Services
 
         return true;
       }
-      catch (Exception e)
+      catch (Exception)
       {
         return false;
       }
     }
     public async Task<bool> CriarConta(Conta model)
     {
+      if (_repositoryConta.GetAll().Where(x => x.NumConta == model.NumConta).Count() > 0)
+        throw new NumContaJaExistenteException(model.NumConta);
+
       try
       {
         await _repositoryConta.AddAsync(model);
@@ -47,7 +51,7 @@ namespace Terminal.Service.Services
 
         return true;
       }
-      catch (Exception e)
+      catch (Exception)
       {
         return false;
       }

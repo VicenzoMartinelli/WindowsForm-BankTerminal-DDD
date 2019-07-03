@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,14 @@ namespace Terminal.Data.Repository
             : base(context)
     {
 
+    }
+
+    public Conta GetByCpfAndNumConta(string cpf, string numConta)
+    {
+      return _dbSet
+        .Include(x => x.Correntista)
+        .Where(x => x.Correntista.CPF == cpf && x.NumConta == numConta)
+        .FirstOrDefault();
     }
   }
 }

@@ -13,7 +13,6 @@ namespace Terminal.Data
   public class TerminalContext : DbContext
   {
     public TerminalContext()
-        //: base("name=ProjetoFinal")
         : base("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=projeto-final;Integrated Security=True")
     {
       Database.SetInitializer(new MigrateDatabaseToLatestVersion<TerminalContext, Config.Config>());

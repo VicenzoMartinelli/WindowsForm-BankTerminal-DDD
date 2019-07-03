@@ -17,5 +17,7 @@ namespace Terminal.Service.Interfaces
 
     IEnumerable<Lancamento> GetExtrato(Conta conta, int margemDias = 30);
     Task<IEnumerable<Lancamento>> GetExtratoAsync(Conta conta, int margemDias = 30);
+    Conta GetContaByCpfAndNumConta(string cpf, string numConta);
+    Task<Conta> GetContaByCpfAndNumContaAsync(string cpf, string numConta);
   }
 }

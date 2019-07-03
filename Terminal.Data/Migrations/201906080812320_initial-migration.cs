@@ -11,12 +11,12 @@ namespace Terminal.Data.Config
                 "dbo.Contas",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
-                        LimiteCredito = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Saldo = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        DataAbertura = c.DateTime(nullable: false),
-                        DataCriacao = c.DateTime(),
-                        DataAlteracao = c.DateTime(),
+                        Id             = c.Guid(nullable: false),
+                        LimiteCredito  = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Saldo          = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        DataAbertura   = c.DateTime(nullable: false),
+                        DataCriacao    = c.DateTime(),
+                        DataAlteracao  = c.DateTime(),
                         Correntista_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

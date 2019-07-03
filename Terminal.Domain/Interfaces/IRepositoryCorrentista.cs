@@ -9,6 +9,6 @@ namespace Terminal.Domain.Interfaces
 {
   public interface IRepositoryConta : IRepository<Conta, Guid>
   {
-
+    Conta GetByCpfAndNumConta(string cpf, string numConta);
   }
 }
